@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ການເລືອກຕັ້ງ ຄະນະນັກສຶກສາລາວ / Bầu cử Ban cán sự sinh viên Lào</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Lao:wght@400;600;700&family=Noto+Sans+Lao:wght@400;500;600&family=Noto+Serif:wght@500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1c1c;
+    --paper:#f7f3ea;
+    --paper-raised:#fffdf8;
+    --navy:#0f2a4a;
+    --navy-deep:#0a1d33;
+    --red:#a8342a;
+    --red-deep:#832820;
+    --gold:#c99a3d;
+    --gold-soft:#e9d9b0;
+    --line:#d8cfba;
+    --muted:#6b6459;
+    --green:#3f7a4e;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans Lao','Noto Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:0 0 64px;}
+  .vi{
+    display:block;
+    font-family:'Noto Sans',sans-serif;
+    font-style:italic;
+    color:var(--muted);
+    font-weight:400;
+  }
+
+  /* Header — ballot masthead */
+  .masthead{
+    background:var(--navy);
+    color:var(--paper-raised);
+    padding:28px 20px 22px;
+    border-bottom:6px solid var(--red);
+    position:relative;
+  }
+  .masthead .stripes{
+    position:absolute; top:0; left:0; right:0; height:4px;
+    background:linear-gradient(90deg, var(--red) 0 33%, var(--paper-raised) 33% 66%, var(--navy) 66% 100%);
+  }
+  .masthead h1{
+    font-family:'Noto Serif Lao','Noto Serif',serif;
+    font-size:1.38rem;
+    font-weight:700;
+    margin:10px 0 2px;
+    letter-spacing:0.01em;
+  }
+  .masthead h1 .vi{
+    font-family:'Noto Serif',serif;
+    font-size:0.86rem;
+    color:var(--gold-soft);
+    margin-top:3px;
+  }
+  .masthead p{
+    margin:12px 0 0;
+    font-size:0.85rem;
+    color:var(--gold-soft);
+    font-weight:500;
+  }
+  .masthead p .vi{color:#b9c3cf; font-size:0.78rem;}
+  .masthead .no{
+    font-size:0.7rem;
+    color:#c9d3de;
+    margin-top:10px;
+  }
+  .masthead .no .vi{color:#8fa0b3; font-size:0.66rem;}
+
+  /* progress */
+  .progress-bar{
+    height:6px; background:#e6ddc6; margin:0;
+    position:sticky; top:0; z-index:5;
+  }
+  .progress-fill{
+    height:100%; background:var(--gold);
+    transition:width .3s ease;
+  }
+
+  .intro{
+    padding:18px 20px 4px;
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+  .intro .vi{font-size:0.78rem; margin-top:2px;}
+
+  /* category ballot card */
+  .category{
+    background:var(--paper-raised);
+    margin:16px 16px 0;
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .category-head{
+    padding:14px 16px 10px;
+    border-bottom:1px dashed var(--line);
+  }
+  .category-head-top{
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .category-num{
+    font-family:'Noto Serif Lao',serif;
+    font-weight:700;
+    font-size:0.92rem;
+    color:var(--red-deep);
+    flex-shrink:0;
+  }
+  .category-title{
+    font-family:'Noto Serif Lao',serif;
+    font-weight:600;
+    font-size:1.02rem;
+    color:var(--navy-deep);
+  }
+  .category-title .vi{
+    font-family:'Noto Serif',serif;
+    font-style:italic;
+    font-size:0.78rem;
+    color:var(--muted);
+    margin-top:1px;
+  }
+  .category-badge{
+    margin-left:auto;
+    font-size:0.68rem;
+    color:var(--navy);
+    background:var(--gold-soft);
+    padding:3px 9px;
+    border-radius:10px;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .category-sub-note{
+    font-size:0.74rem;
+    color:var(--muted);
+    margin-top:6px;
+    padding-left:1px;
+  }
+  .category-sub-note .vi{display:inline; font-size:0.74rem; margin:0;}
+
+  .section-label{
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--navy);
+    text-transform:none;
+    padding:10px 16px 2px;
+    background:#f2ecdc;
+  }
+  .section-label .vi{display:inline; font-size:0.7rem; margin-left:6px; font-weight:400;}
+
+  .candidate{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 16px;
+    border-bottom:1px solid #efe9db;
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .candidate:last-child{border-bottom:none;}
+  .candidate:active{background:var(--gold-soft);}
+  .candidate.checked{background:#fbf3de;}
+  .candidate.disabled{opacity:0.4; cursor:not-allowed;}
+
+  .bubble{
+    width:22px; height:22px; flex-shrink:0;
+    border:2px solid var(--navy);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .bubble .dot{
+    width:11px; height:11px; border-radius:50%;
+    background:var(--red);
+    transform:scale(0);
+    transition:transform .12s ease;
+  }
+  .candidate.checked .dot{transform:scale(1);}
+
+  .cand-name{font-size:0.95rem; flex:1;}
+  .cand-batch{
+    font-size:0.67rem;
+    color:var(--navy);
+    background:var(--gold-soft);
+    padding:2px 7px;
+    border-radius:10px;
+    flex-shrink:0;
+  }
+  .candidate input{position:absolute; opacity:0; pointer-events:none;}
+
+  /* auto-roster rows (no voting) */
+  .roster-row{
+    display:flex; align-items:center; gap:12px;
+    padding:11px 16px;
+    border-bottom:1px solid #efe9db;
+  }
+  .roster-row:last-child{border-bottom:none;}
+  .roster-check{
+    width:20px; height:20px; flex-shrink:0;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.72rem;
+  }
+  .roster-row .cand-name{font-size:0.94rem; flex:1;}
+
+  .missing-flag{
+    display:none;
+    font-size:0.75rem;
+    color:var(--red-deep);
+    padding:0 16px 10px;
+  }
+  .missing-flag .vi{display:inline; font-size:0.73rem; margin-left:4px;}
+  .category.invalid{border-color:var(--red);}
+  .category.invalid .missing-flag{display:block;}
+
+  /* submit */
+  .submit-zone{
+    padding:26px 16px 8px;
+  }
+  button{
+    font-family:inherit;
+    cursor:pointer;
+  }
+  .btn-primary{
+    width:100%;
+    background:var(--red);
+    color:#fdf6ea;
+    border:none;
+    padding:14px;
+    font-size:1rem;
+    font-weight:600;
+    border-radius:3px;
+    letter-spacing:0.01em;
+    line-height:1.4;
+  }
+  .btn-primary .vi{color:#f0d9cf; font-size:0.76rem; font-weight:400; font-style:italic;}
+  .btn-primary:active{background:var(--red-deep);}
+  .btn-primary:disabled{background:#c9b9a4; cursor:not-allowed;}
+  .hint{
+    text-align:center;
+    font-size:0.75rem;
+    color:var(--muted);
+    margin-top:10px;
+  }
+  .hint .vi{display:block; font-size:0.72rem;}
+
+  .btn-ghost{
+    width:100%;
+    background:transparent;
+    border:1.5px solid var(--navy);
+    color:var(--navy);
+    padding:12px;
+    font-size:0.9rem;
+    font-weight:500;
+    border-radius:3px;
+    margin-top:10px;
+    line-height:1.4;
+  }
+  .btn-ghost .vi{color:var(--muted); font-size:0.74rem; font-weight:400; font-style:italic;}
+
+  /* thank-you / results screens */
+  .screen{display:none;}
+  .screen.active{display:block;}
+
+  .thanks{
+    text-align:center;
+    padding:60px 24px 20px;
+  }
+  .thanks .seal{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;
+    font-size:1.8rem;
+    border:3px solid var(--gold);
+  }
+  .thanks h2{
+    font-family:'Noto Serif Lao',serif;
+    color:var(--navy-deep);
+    font-size:1.25rem;
+    margin:0 0 3px;
+  }
+  .thanks h2 .vi{font-family:'Noto Serif',serif; font-size:0.85rem; margin-top:2px;}
+  .thanks p{color:var(--muted); font-size:0.88rem; margin:0 0 24px;}
+  .thanks p .vi{font-size:0.8rem;}
+
+  .results-wrap{padding:16px;}
+  .results-header{
+    padding:18px 4px 8px;
+  }
+  .results-header h2{
+    font-family:'Noto Serif Lao',serif;
+    color:var(--navy-deep);
+    font-size:1.15rem;
+    margin:0 0 2px;
+  }
+  .results-header h2 .vi{font-family:'Noto Serif',serif; font-size:0.8rem;}
+  .results-header p{font-size:0.78rem; color:var(--muted); margin:6px 0 0;}
+  .results-header p .vi{font-size:0.74rem;}
+  .results-header-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px;}
+  .admin-btn{background:transparent;border:1px solid var(--navy);color:var(--navy);padding:7px 12px;border-radius:4px;font-size:.72rem;cursor:pointer;}
+  .admin-btn:active{background:var(--navy);color:#fff;}
+  .danger-btn{background:var(--red);color:#fff;border:none;padding:12px;width:100%;border-radius:4px;font-size:.9rem;font-weight:600;cursor:pointer;}
+  .danger-btn:disabled{opacity:.55;cursor:not-allowed;}
+  .admin-warning{background:#fff4f0;border:1px solid #e6b5aa;padding:12px;border-radius:6px;color:#8a2417;font-size:.78rem;line-height:1.6;margin:15px 0;}
+
+  .result-cat{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    margin-bottom:14px;
+    padding:14px 16px 10px;
+    border-radius:2px;
+  }
+  .result-cat h3{
+    font-family:'Noto Serif Lao',serif;
+    font-size:0.95rem;
+    color:var(--navy-deep);
+    margin:0 0 2px;
+  }
+  .result-cat h3 .vi{font-family:'Noto Serif',serif; font-size:0.72rem; margin-bottom:8px;}
+  .result-note{
+    font-size:0.72rem; color:var(--muted); margin-bottom:8px; display:block;
+  }
+  .result-row{margin-bottom:9px;}
+  .result-row-top{
+    display:flex; justify-content:space-between;
+    font-size:0.84rem; margin-bottom:4px;
+  }
+  .result-row-top .rname{flex:1; padding-right:8px;}
+  .result-row-top .rcount{color:var(--muted); white-space:nowrap; font-size:0.76rem;}
+  .result-track{
+    height:8px; background:#efe9db; border-radius:4px; overflow:hidden;
+  }
+  .result-fill{
+    height:100%; background:var(--gold); border-radius:4px;
+    transition:width .5s ease;
+  }
+  .result-row.leader .result-fill{background:var(--red);}
+  .result-row.leader .rname{font-weight:600; color:var(--red-deep);}
+
+  .roster-static{
+    font-size:0.86rem; padding:5px 0; border-bottom:1px solid #efe9db;
+    display:flex; align-items:center; gap:8px;
+  }
+  .roster-static:last-child{border-bottom:none;}
+
+  .total-votes{
+    text-align:center;
+    font-size:0.77rem;
+    color:var(--muted);
+    padding:6px 0 20px;
+  }
+  .total-votes .vi{font-size:0.73rem;}
+
+  .toast{
+    position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+    background:var(--navy-deep); color:#fff;
+    padding:10px 18px; border-radius:20px;
+    font-size:0.8rem; opacity:0; pointer-events:none;
+    transition:opacity .25s ease;
+    z-index:50;
+    text-align:center;
+  }
+  .toast.show{opacity:1;}
+  .toast .vi{font-size:0.72rem; color:#cfd8e2;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="masthead">
+    <div class="stripes"></div>
+    <h1>ການເລືອກຕັ້ງ ຄະນະນັກສຶກສາລາວ<span class="vi">Bầu cử Ban cán sự sinh viên Lào</span></h1>
+    <p>ມະຫາວິທະຍາໄລ ຮ່າລອງ · ສົກຮຽນໃໝ່<span class="vi">Đại học Hạ Long · Năm học mới</span></p>
+    <div class="no">ບັດເລືອກຕັ້ງທາງອອນລາຍ · ໂຫວດໄດ້ 1 ຄັ້ງ<span class="vi">Phiếu bầu trực tuyến · Chỉ được bầu 1 lần</span></div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+  <!-- IDENTITY SCREEN -->
+  <div class="screen active" id="identityScreen">
+    <div class="intro" style="padding-top:20px;">ກະລຸນາປ້ອນຊື່ ແລະ ນາມສະກຸນຂອງທ່ານກ່ອນເລີ່ມໂຫວດ ເພື່ອກັນການໂຫວດຊ້ຳ.<span class="vi">Vui lòng nhập họ tên trước khi bầu, để tránh bầu trùng lặp.</span></div>
+    <div class="category" style="margin-top:12px;">
+      <div class="category-head" style="border-bottom:none;">
+        <div style="display:flex; flex-direction:column; gap:14px; padding:6px 0 12px;">
+          <div>
+            <label style="font-size:0.86rem; font-weight:600; color:var(--navy-deep); display:block; margin-bottom:6px;">ຊື່<span class="vi" style="display:inline; margin-left:6px;">Tên</span></label>
+            <input type="text" id="firstNameInput" placeholder="ຕົວຢ່າງ: Somchai" style="width:100%; padding:12px; border:1.5px solid var(--line); border-radius:3px; font-size:0.95rem; font-family:inherit; background:var(--paper-raised);">
+          </div>
+          <div>
+            <label style="font-size:0.86rem; font-weight:600; color:var(--navy-deep); display:block; margin-bottom:6px;">ນາມສະກຸນ<span class="vi" style="display:inline; margin-left:6px;">Họ</span></label>
+            <input type="text" id="lastNameInput" placeholder="ຕົວຢ່າງ: Somsanith" style="width:100%; padding:12px; border:1.5px solid var(--line); border-radius:3px; font-size:0.95rem; font-family:inherit; background:var(--paper-raised);">
+          </div>
+          <div>
+            <label style="font-size:0.86rem; font-weight:600; color:var(--navy-deep); display:block; margin-bottom:6px;">ຮຸ່ນ<span class="vi" style="display:inline; margin-left:6px;">Khóa</span></label>
+            <select id="batchInput" style="width:100%; padding:12px; border:1.5px solid var(--line); border-radius:3px; font-size:0.95rem; font-family:inherit; background:var(--paper-raised);">
+              <option value="">-- ເລືອກຮຸ່ນ / Chọn khóa --</option>
+              <option value="K11">K11</option>
+              <option value="K12">K12</option>
+              <option value="K13">K13</option>
+              <option value="K14">K14</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="submit-zone">
+      <button class="btn-primary" id="continueBtn">ດຳເນີນການຕໍ່<span class="vi">Tiếp tục</span></button>
+      <div class="hint">ຂໍ້ມູນນີ້ໃຊ້ເພື່ອກັນການໂຫວດຊ້ຳເທົ່ານັ້ນ<span class="vi">Thông tin này chỉ dùng để tránh bầu trùng lặp</span></div>
+    </div>
+  </div>
+
+  <!-- ALREADY VOTED SCREEN -->
+  <div class="screen" id="blockedScreen">
+    <div class="thanks">
+      <div class="seal" style="background:var(--red); border-color:var(--red-deep);">!</div>
+      <h2>ຊື່ນີ້ໄດ້ໂຫວດໄປແລ້ວ<span class="vi">Tên này đã bầu rồi</span></h2>
+      <p>ແຕ່ລະຄົນໂຫວດໄດ້ພຽງຄັ້ງດຽວ. ຖ້າມີຂໍ້ຜິດພາດ ກະລຸນາຕິດຕໍ່ຄະນະຈັດງານ.<span class="vi">Mỗi người chỉ được bầu một lần. Nếu có nhầm lẫn, vui lòng liên hệ ban tổ chức.</span></p>
+      <button class="btn-ghost" id="blockedBackBtn" style="max-width:280px;margin:0 auto 10px;">ລອງໃໝ່ດ້ວຍຊື່ອື່ນ<span class="vi">Thử lại với tên khác</span></button>
+      <button class="btn-primary" id="blockedResultsBtn" style="max-width:280px;margin:0 auto;">ເບິ່ງຜົນຄະແນນສົດ<span class="vi">Xem kết quả trực tiếp</span></button>
+    </div>
+  </div>
+
+  <!-- VOTE SCREEN -->
+  <div class="screen" id="voteScreen">
+    <div class="intro">ກະລຸນາເລືອກຕາມຈຳນວນທີ່ກຳນົດໃນແຕ່ລະໜ່ວຍງານ. ຫຼັງຈາກສົ່ງແລ້ວຈະບໍ່ສາມາດແກ້ໄຂໄດ້.<span class="vi">Vui lòng chọn đúng số lượng quy định cho mỗi ban. Sau khi gửi sẽ không thể chỉnh sửa.</span></div>
+    <div id="categoriesContainer"></div>
+    <div class="submit-zone">
+      <button class="btn-primary" id="submitBtn">ສົ່ງບັດເລືອກຕັ້ງ<span class="vi">Gửi phiếu bầu</span></button>
+      <button class="btn-ghost" id="viewResultsBtn">ເບິ່ງຜົນຄະແນນ (ສົດ)<span class="vi">Xem kết quả (trực tiếp)</span></button>
+      <div class="hint" id="progressHint">ຍັງເລືອກຄົບ 0 / 5 ໜ່ວຍງານທີ່ຕ້ອງໂຫວດ<span class="vi">Đã chọn đủ 0 / 5 mục cần bầu</span></div>
+    </div>
+  </div>
+
+  <!-- THANK YOU SCREEN -->
+  <div class="screen" id="thanksScreen">
+    <div class="thanks">
+      <div class="seal">✓</div>
+      <h2>ຂອບໃຈສຳລັບການໂຫວດ<span class="vi">Cảm ơn bạn đã bỏ phiếu</span></h2>
+      <p id="thanksMsg">ບັດເລືອກຕັ້ງຂອງທ່ານຖືກບັນທຶກແລ້ວ<span class="vi">Phiếu bầu của bạn đã được ghi nhận</span></p>
+      <button class="btn-primary" id="goResultsBtn" style="max-width:280px;margin:0 auto;">ເບິ່ງຜົນຄະແນນສົດ<span class="vi">Xem kết quả trực tiếp</span></button>
+    </div>
+  </div>
+
+  <!-- RESULTS PASSWORD SCREEN -->
+  <div class="screen" id="resultsPasswordScreen">
+    <div class="results-wrap" style="max-width:520px;">
+      <div class="results-header">
+        <h2>🔐 ຜົນຄະແນນສົດ<span class="vi">Kết quả trực tiếp</span></h2>
+        <p>ກະລຸນາໃສ່ລະຫັດຜ່ານກ່ອນເຂົ້າເບິ່ງຄະແນນ<span class="vi">Vui lòng nhập mật khẩu để xem kết quả</span></p>
+      </div>
+      <div style="padding:20px 0;">
+        <input id="resultsPasswordInput" type="password" autocomplete="off"
+          placeholder="ລະຫັດຜ່ານ / Mật khẩu"
+          style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1px solid #ccc;font-size:1rem;">
+        <div id="resultsPasswordError" style="display:none;margin-top:10px;text-align:center;">
+          <span style="color:#c62828;">ລະຫັດຜ່ານບໍ່ຖືກ<span class="vi">Mật khẩu không đúng</span></span>
+        </div>
+      </div>
+      <button class="btn-primary" id="resultsPasswordBtn">
+        ເຂົ້າເບິ່ງຄະແນນ<span class="vi">Xem kết quả</span>
+      </button>
+      <button class="btn-ghost" id="resultsPasswordBackBtn">
+        ກັບຄືນ<span class="vi">Quay lại</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ADMIN PASSWORD SCREEN -->
+  <div class="screen" id="adminPasswordScreen">
+    <div class="results-wrap" style="max-width:520px;">
+      <div class="results-header">
+        <h2>🔐 ADMIN<span class="vi">Quản trị hệ thống</span></h2>
+        <p>ຕ້ອງໃສ່ລະຫັດ Admin ເພື່ອເຂົ້າຈັດການ<span class="vi">Nhập mật khẩu Admin để quản lý hệ thống</span></p>
+      </div>
+      <div style="padding:20px 0;">
+        <input id="adminPasswordInput" type="password" autocomplete="off"
+          placeholder="ລະຫັດ Admin / Mật khẩu Admin"
+          style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1px solid #ccc;font-size:1rem;">
+        <div id="adminPasswordError" style="display:none;margin-top:10px;text-align:center;">
+          <span style="color:#c62828;">ລະຫັດ Admin ບໍ່ຖືກ<span class="vi">Mật khẩu Admin không đúng</span></span>
+        </div>
+      </div>
+      <button class="btn-primary" id="adminPasswordBtn">ເຂົ້າ Admin<span class="vi">Vào Admin</span></button>
+      <button class="btn-ghost" id="adminPasswordBackBtn">ກັບຄືນ<span class="vi">Quay lại</span></button>
+    </div>
+  </div>
+
+  <!-- ADMIN SCREEN -->
+  <div class="screen" id="adminScreen">
+    <div class="results-wrap" style="max-width:600px;">
+      <div class="results-header">
+        <h2>⚙️ ADMIN<span class="vi">Quản trị hệ thống</span></h2>
+        <p>ຈັດການຂໍ້ມູນການໂຫວດ<span class="vi">Quản lý dữ liệu bầu cử</span></p>
+      </div>
+      <div class="admin-warning">
+        ⚠️ <b>ຄຳເຕືອນ / Cảnh báo:</b><br>
+        ປຸ່ມນີ້ຈະລຶບຄະແນນໂຫວດທັງໝົດ ແລະ ລາຍຊື່ຜູ້ທີ່ໂຫວດແລ້ວທັງໝົດ. ຂໍ້ມູນຈະກູ້ຄືນບໍ່ໄດ້.<br>
+        <span class="vi">Nút này sẽ xóa toàn bộ phiếu bầu và danh sách người đã bỏ phiếu. Dữ liệu sẽ không thể khôi phục.</span>
+      </div>
+      <button class="danger-btn" id="resetAllBtn">🗑️ ລີເຊັດຄະແນນທັງໝົດ<span class="vi">Xóa toàn bộ dữ liệu bầu cử</span></button>
+      <button class="btn-ghost" id="adminBackBtn">ກັບໄປຜົນຄະແນນ<span class="vi">Quay lại kết quả</span></button>
+      <div id="adminStatus" style="text-align:center;font-size:.78rem;color:var(--muted);padding-top:12px;"></div>
+    </div>
+  </div>
+
+  <!-- RESULTS SCREEN -->
+  <div class="screen" id="resultsScreen">
+    <div class="results-wrap">
+      <div class="results-header">
+        <h2>ຜົນຄະແນນສົດ<span class="vi">Kết quả trực tiếp</span></h2>
+        <p>ຄະແນນຈະອັບເດດອັດຕະໂນມັດແບບສົດ<span class="vi">Điểm sẽ tự động cập nhật theo thời gian thực</span></p>
+        <div class="results-header-actions">
+          <button class="admin-btn" id="openAdminBtn">⚙️ ADMIN</button>
+        </div>
+      </div>
+      <div id="resultsContainer"></div>
+      <div class="total-votes" id="totalVotes"></div>
+      <button class="btn-ghost" id="refreshBtn">ໂຫຼດຄືນໃໝ່<span class="vi">Tải lại</span></button>
+      <button class="btn-ghost" id="backToVoteBtn">ກັບໄປໜ້າໂຫວດ<span class="vi">Quay lại trang bầu cử</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Firebase / Cloud Firestore -->
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBAW88HVsr7QIHMytAuAtZHE32Wz0WhmGA",
+    authDomain: "chon-ban-moi.firebaseapp.com",
+    projectId: "chon-ban-moi",
+    storageBucket: "chon-ban-moi.firebasestorage.app",
+    messagingSenderId: "341357183727",
+    appId: "1:341357183727:web:9a5c8d21a8ed2602fb511a",
+    measurementId: "G-H1L658HVM4"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
+<script>
+const CANDIDATES = [{"no":1,"category":"ຄະນະນັກສຶກສາ","name":"Khampasert Khounvithong","batch":"K12"},{"no":2,"category":"ຄະນະນັກສຶກສາ","name":"Anou Keosavath","batch":"K12"},{"no":3,"category":"ຄະນະນັກສຶກສາ","name":"Latthakone Thammavongsa","batch":"K13"},{"no":4,"category":"ຄະນະນັກສຶກສາ","name":"Touning Xayvangmuang","batch":"K13"},{"no":5,"category":"ໜ່ວຍງານແມ່ຍິງ","name":"Nong Thavongkhabounmee","batch":"K12"},{"no":6,"category":"ໜ່ວຍງານແມ່ຍິງ","name":"Chem Lachampa","batch":"K12"},{"no":7,"category":"ໜ່ວຍງານແມ່ຍິງ","name":"Mayyang vangpor","batch":"K13"},{"no":8,"category":"ໜ່ວຍງານແມ່ຍິງ","name":"Ding Sykhampheng","batch":"K13"},{"no":9,"category":"ໜ່ວຍງານຊາວໜຸ່ມ","name":"Sompathana Amphaivong","batch":"K12"},{"no":10,"category":"ໜ່ວຍງານຊາວໜຸ່ມ","name":"Vilasac Amphone","batch":"K12"},{"no":11,"category":"ໜ່ວຍງານຊາວໜຸ່ມ","name":"Alisa Xayoudom","batch":"K13"},{"no":12,"category":"ໜ່ວຍງານຊາວໜຸ່ມ","name":"Somkhit Thebphunvong","batch":"K13"},{"no":13,"category":"ໜ່ວຍງານອະນາໄມ","name":"Anoulack Vilaychit","batch":"K12"},{"no":14,"category":"ໜ່ວຍງານອະນາໄມ","name":"Tountin phounhuangsy","batch":"K12"},{"no":15,"category":"ໜ່ວຍງານອະນາໄມ","name":"Inchila Mavichit","batch":"K13"},{"no":16,"category":"ໜ່ວຍງານອະນາໄມ","name":"Xay Phanboutdi","batch":"K13"},{"no":17,"category":"ໜ່ວຍງານສື່ສານມວນຊົນ","name":"Sommay Kiphavong","batch":"K12"},{"no":18,"category":"ໜ່ວຍງານສື່ສານມວນຊົນ","name":"Anou Keosavath","batch":"K12"},{"no":19,"category":"ໜ່ວຍງານສື່ສານມວນຊົນ","name":"Thanousuk Vongsengchan","batch":"K12"},{"no":20,"category":"ໜ່ວຍງານສື່ສານມວນຊົນ","name":"Khampasert Khounvithong","batch":"K12"},{"no":21,"category":"ໜ່ວຍງານສື່ສານມວນຊົນ","name":"Souliya Somphan","batch":"K13"},{"no":22,"category":"ໜ່ວຍງານສື່ສານມວນຊົນ","name":"Vidaphone Soukphaly","batch":"K13"},{"no":23,"category":"ສຸກເສີນ","name":"Tountin phounhuangsy","batch":"K12"},{"no":24,"category":"ສຸກເສີນ","name":"Aunnicha Dittaphong","batch":"K12"},{"no":25,"category":"ສຸກເສີນ","name":"Muen phommasouk","batch":"K12"},{"no":26,"category":"ສຸກເສີນ","name":"Thanousuk Vongsengchan","batch":"K12"},{"no":27,"category":"ສຸກເສີນ","name":"Vilasac Amphone","batch":"K12"},{"no":28,"category":"ສຸກເສີນ","name":"Pepsi khoundala","batch":"K13"},{"no":29,"category":"ສຸກເສີນ","name":"Phutthasack Chaleunsinh","batch":"K13"},{"no":30,"category":"ສຸກເສີນ","name":"Phumpaseut Vongsy","batch":"K13"},{"no":31,"category":"ສຸກເສີນ","name":"TeySit Syphengxay","batch":"K13"},{"no":32,"category":"ສຸກເສີນ","name":"Cheng Duongchanthor","batch":"K13"},{"no":33,"category":"ຮ່ຳຮຽນ","name":"Sanaxay","batch":"K12"},{"no":34,"category":"ຮ່ຳຮຽນ","name":"Aodphet VONGSANGOUAN","batch":"K12"},{"no":35,"category":"ຮ່ຳຮຽນ","name":"Thongmay Thipboutdy","batch":"K13"},{"no":36,"category":"ຮ່ຳຮຽນ","name":"Touning Xayvangmuang","batch":"K13"},{"no":37,"category":"ຈັດສະຖານທີ່","name":"phetsavan","batch":"K12"},{"no":38,"category":"ຈັດສະຖານທີ່","name":"Ko","batch":"K12"},{"no":39,"category":"ຈັດສະຖານທີ່","name":"Pany chanthasouk","batch":"K12"},{"no":40,"category":"ຈັດສະຖານທີ່","name":"Souliya Somphan","batch":"K13"},{"no":41,"category":"ຈັດສະຖານທີ່","name":"Kong Lorxayxang","batch":"K13"},{"no":42,"category":"ຈັດສະຖານທີ່","name":"Vilaphong Bounyong","batch":"K13"},{"no":43,"category":"ບັນຊີ","name":"Nun","batch":"K12"},{"no":44,"category":"ບັນຊີ","name":"Chansamout Chanpasert","batch":"K13"},{"no":45,"category":"ສິລະປະ","name":"Khonesy Nitthavong","batch":"K13"},{"no":46,"category":"ສິລະປະ","name":"Thipphavone Luanglath","batch":"K13"},{"no":47,"category":"ຄະນະນັກສຶກສາ","name":"ຢີ່ ເພັດສະວົງA","batch":"K14"},{"no":48,"category":"ຄະນະນັກສຶກສາ","name":"ສັນເສີນB","batch":"K14"},{"no":49,"category":"ໜ່ວຍງານແມ່ຍິງ","name":"ປຸ້ຍ C","batch":"K14"},{"no":50,"category":"ໜ່ວຍງານແມ່ຍິງ","name":"ສຸດາວອນ B","batch":"K14"},{"no":51,"category":"ໜ່ວຍງານຊາວໜຸ່ມ","name":"ອາລຸນ","batch":"K14"},{"no":52,"category":"ໜ່ວຍງານຊາວໜຸ່ມ","name":"ພຸດທະວັນ","batch":"K14"},{"no":53,"category":"ໜ່ວຍງານອະນາໄມ","name":"ໄຊຍາກອນ","batch":"K14"},{"no":54,"category":"ໜ່ວຍງານອະນາໄມ","name":"ເສົາທິໄຊ","batch":"K14"},{"no":55,"category":"ໜ່ວຍງານສື່ສານມວນຊົນ","name":"ເຜີ້ງ B","batch":"K14"},{"no":56,"category":"ໜ່ວຍງານສື່ສານມວນຊົນ","name":"ຢູລິ","batch":"K14"},{"no":57,"category":"ສຸກເສີນ","name":"ໄກ່ B","batch":"K14"},{"no":58,"category":"ສຸກເສີນ","name":"ນຸນີ່ B","batch":"K14"},{"no":59,"category":"ສຸກເສີນ","name":"ລັດທະນາກອນ","batch":"K14"},{"no":60,"category":"ສຸກເສີນ","name":"ນໍ້າລິນD","batch":"K14"},{"no":61,"category":"ສຸກເສີນ","name":"ມຸກC","batch":"K14"},{"no":62,"category":"ຮ່ຳຮຽນ","name":"ວິໄລແກ້ວ D","batch":"K14"},{"no":63,"category":"ຮ່ຳຮຽນ","name":"ເຟ່ຍD","batch":"K14"},{"no":64,"category":"ຈັດສະຖານທີ່","name":"ໂລຊີງ D","batch":"K14"},{"no":65,"category":"ຈັດສະຖານທີ່","name":"ອາສາວ","batch":"K14"},{"no":66,"category":"ຈັດສະຖານທີ່","name":"ລັກC","batch":"K14"},{"no":67,"category":"ບັນຊີ","name":"ຕານ້ອຍ D","batch":"K14"}];
+
+const CATEGORY_VI = {
+  "ຄະນະນັກສຶກສາ": "Ban cán sự sinh viên",
+  "ໜ່ວຍງານແມ່ຍິງ": "Ban Phụ nữ",
+  "ໜ່ວຍງານຊາວໜຸ່ມ": "Ban Thanh niên",
+  "ໜ່ວຍງານອະນາໄມ": "Ban Vệ sinh",
+  "ໜ່ວຍງານສື່ສານມວນຊົນ": "Ban Truyền thông",
+  "ສຸກເສີນ": "Ban Cấp cứu",
+  "ຮ່ຳຮຽນ": "Ban Học tập",
+  "ຈັດສະຖານທີ່": "Ban Hậu cần - Địa điểm",
+  "ບັນຊີ": "Ban Kế toán - Tài chính",
+  "ສິລະປະ": "Ban Văn nghệ"
+};
+
+// mode: 'vote' (multi-select N), 'leader' (all auto + elect 1 leader), 'auto' (all in, no vote)
+const RULES = {
+  "ຄະນະນັກສຶກສາ": {mode:'vote', select:4},
+  "ໜ່ວຍງານແມ່ຍິງ": {mode:'vote', select:3},
+  "ໜ່ວຍງານຊາວໜຸ່ມ": {mode:'vote', select:3},
+  "ໜ່ວຍງານອະນາໄມ": {mode:'vote', select:3},
+  "ໜ່ວຍງານສື່ສານມວນຊົນ": {mode:'vote', select:3},
+  "ສຸກເສີນ": {mode:'vote', select:3},
+  "ຮ່ຳຮຽນ": {mode:'vote', select:3},
+  "ຈັດສະຖານທີ່": {mode:'vote', select:3},
+  "ບັນຊີ": {mode:'vote', select:2},
+  "ສິລະປະ": {mode:'vote', select:1}
+};
+
+// Build category list preserving order of first appearance
+const categories = [];
+const seen = {};
+CANDIDATES.forEach(c => {
+  if(!seen[c.category]){ seen[c.category]=true; categories.push(c.category); }
+});
+
+const voteCategories = categories.filter(c => RULES[c].mode === 'vote');
+const leaderCategories = categories.filter(c => RULES[c].mode === 'leader');
+const interactiveCategories = [...voteCategories, ...leaderCategories];
+
+const selections = {};   // vote-mode: category -> array of names
+const leaderPick = {};   // leader-mode: category -> name
+let voterInfo = null;    // {firstName, lastName, batch}
+
+function normalizeVoterKey(first, last, batch){
+  return (first + '_' + last + '_' + batch)
+    .trim().toLowerCase().replace(/\s+/g,'');
+}
+
+function renderBallot(){
+  const container = document.getElementById('categoriesContainer');
+  container.innerHTML = '';
+  categories.forEach((cat, idx) => {
+    const rule = RULES[cat];
+    const candidates = CANDIDATES.filter(c => c.category === cat);
+    const catDiv = document.createElement('div');
+    catDiv.className = 'category';
+    catDiv.id = 'category_' + idx;
+
+    let badgeHtml = '';
+    if(rule.mode === 'vote') badgeHtml = `<span class="category-badge">ເລືອກ ${rule.select} ຄົນ</span>`;
+    else if(rule.mode === 'leader') badgeHtml = `<span class="category-badge">ເລືອກຫົວໜ້າ 1</span>`;
+    else badgeHtml = `<span class="category-badge">ຮັບໝົດ</span>`;
+
+    const head = document.createElement('div');
+    head.className = 'category-head';
+    let headHtml = `<div class="category-head-top">
+        <span class="category-num">${idx+1}.</span>
+        <span class="category-title">${cat}<span class="vi">${CATEGORY_VI[cat] || ''}</span></span>
+        ${badgeHtml}
+      </div>`;
+    if(rule.mode === 'auto' && rule.note){
+      headHtml += `<div class="category-sub-note">${rule.note}<span class="vi">${rule.noteVi}</span></div>`;
+    }
+    head.innerHTML = headHtml;
+    catDiv.appendChild(head);
+
+    if(rule.mode === 'vote'){
+      selections[cat] = selections[cat] || [];
+      const label = document.createElement('div');
+      label.className = 'section-label';
+      label.innerHTML = `ໂຫວດເລືອກ ${rule.select} ຄົນ ຈາກ ${candidates.length} ຄົນ<span class="vi">Bầu chọn ${rule.select} người trong ${candidates.length} ứng viên</span>`;
+      catDiv.appendChild(label);
+
+      candidates.forEach(cand => {
+        const row = document.createElement('label');
+        row.className = 'candidate';
+        row.innerHTML = `
+          <input type="checkbox" value="${cand.name}">
+          <span class="bubble"><span class="dot"></span></span>
+          <span class="cand-name">${cand.name}</span>
+          <span class="cand-batch">${cand.batch}</span>
+        `;
+        row.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleVoteSelection(cat, cand.name, rule.select, catDiv);
+        });
+        row.dataset.name = cand.name;
+        catDiv.appendChild(row);
+      });
+
+    } else if(rule.mode === 'leader'){
+      const rosterLabel = document.createElement('div');
+      rosterLabel.className = 'section-label';
+      rosterLabel.innerHTML = `ສະມາຊິກທັງໝົດ (ຮັບອັດຕະໂນມັດ)<span class="vi">Tất cả thành viên (tự động được nhận)</span>`;
+      catDiv.appendChild(rosterLabel);
+      candidates.forEach(cand => {
+        const r = document.createElement('div');
+        r.className = 'roster-row';
+        r.innerHTML = `<span class="roster-check">✓</span><span class="cand-name">${cand.name}</span><span class="cand-batch">${cand.batch}</span>`;
+        catDiv.appendChild(r);
+      });
+
+      const voteLabel = document.createElement('div');
+      voteLabel.className = 'section-label';
+      voteLabel.innerHTML = `ໂຫວດເລືອກຫົວໜ້າໜ່ວຍງານ 1 ຄົນ<span class="vi">Bầu chọn 1 trưởng ban</span>`;
+      catDiv.appendChild(voteLabel);
+      candidates.forEach(cand => {
+        const row = document.createElement('label');
+        row.className = 'candidate';
+        row.innerHTML = `
+          <input type="radio" name="leader_${idx}" value="${cand.name}">
+          <span class="bubble"><span class="dot"></span></span>
+          <span class="cand-name">${cand.name}</span>
+          <span class="cand-batch">${cand.batch}</span>
+        `;
+        row.addEventListener('click', () => {
+          leaderPick[cat] = cand.name;
+          catDiv.querySelectorAll('.candidate').forEach(r => r.classList.remove('checked'));
+          row.classList.add('checked');
+          catDiv.classList.remove('invalid');
+          updateProgress();
+        });
+        catDiv.appendChild(row);
+      });
+
+    } else {
+      // auto mode — static roster, no interaction
+      candidates.forEach(cand => {
+        const r = document.createElement('div');
+        r.className = 'roster-row';
+        r.innerHTML = `<span class="roster-check">✓</span><span class="cand-name">${cand.name}</span><span class="cand-batch">${cand.batch}</span>`;
+        catDiv.appendChild(r);
+      });
+    }
+
+    if(rule.mode !== 'auto'){
+      const missingFlag = document.createElement('div');
+      missingFlag.className = 'missing-flag';
+      if(rule.mode === 'vote'){
+        missingFlag.innerHTML = `ກະລຸນາເລືອກໃຫ້ຄົບ ${rule.select} ຄົນ ໃນໜ່ວຍງານນີ້<span class="vi">Vui lòng chọn đủ ${rule.select} người ở ban này</span>`;
+      } else {
+        missingFlag.innerHTML = `ກະລຸນາເລືອກຫົວໜ້າ 1 ຄົນ<span class="vi">Vui lòng chọn 1 trưởng ban</span>`;
+      }
+      catDiv.appendChild(missingFlag);
+    }
+
+    container.appendChild(catDiv);
+  });
+}
+
+function toggleVoteSelection(cat, name, limit, catDiv){
+  const arr = selections[cat];
+  const i = arr.indexOf(name);
+  const row = catDiv.querySelector(`.candidate[data-name="${CSS.escape(name)}"]`);
+  if(i >= 0){
+    arr.splice(i,1);
+    row.classList.remove('checked');
+  } else {
+    if(arr.length >= limit){
+      showToast('ເລືອກຄົບ ' + limit + ' ຄົນແລ້ວ, ເອົາອອກກ່ອນຈຶ່ງຈະເລືອກຄົນອື່ນໄດ້');
+      return;
+    }
+    arr.push(name);
+    row.classList.add('checked');
+  }
+  // grey out unselected when limit reached
+  const atLimit = arr.length >= limit;
+  catDiv.querySelectorAll('.candidate').forEach(r => {
+    if(!r.classList.contains('checked')){
+      r.classList.toggle('disabled', atLimit);
+    }
+  });
+  const label = catDiv.querySelector('.section-label');
+  if(label){
+    label.innerHTML = `ໂຫວດເລືອກ ${limit} ຄົນ — ເລືອກແລ້ວ ${arr.length}/${limit}<span class="vi">Bầu chọn ${limit} người — đã chọn ${arr.length}/${limit}</span>`;
+  }
+  if(arr.length === limit) catDiv.classList.remove('invalid');
+  updateProgress();
+}
+
+function updateProgress(){
+  let done = 0;
+  voteCategories.forEach(cat => { if(selections[cat] && selections[cat].length === RULES[cat].select) done++; });
+  leaderCategories.forEach(cat => { if(leaderPick[cat]) done++; });
+  const total = interactiveCategories.length;
+  document.getElementById('progressFill').style.width = (done/total*100) + '%';
+  document.getElementById('progressHint').innerHTML = `ຍັງເລືອກຄົບ ${done} / ${total} ໜ່ວຍງານທີ່ຕ້ອງໂຫວດ<span class="vi">Đã chọn đủ ${done} / ${total} mục cần bầu</span>`;
+}
+
+function showToast(msg, msgVi){
+  const t = document.getElementById('toast');
+  t.innerHTML = msg + (msgVi ? `<span class="vi">${msgVi}</span>` : '');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+async function hasAlreadyVoted(){
+  return false;
+}
+
+async function markVoted(){
+  // Firebase Firestore is now the central database.
+  // No local window.storage flag is needed.
+}
+
+async function isVoterAlreadyVoted(key){
+  try{
+    const doc = await db.collection('voters').doc(key).get();
+    return doc.exists;
+  }catch(e){
+    console.error('check voter failed', e);
+    throw e;
+  }
+}
+
+async function registerVoter(key, info){
+  await db.collection('voters').doc(key).set({
+    firstName: info.firstName,
+    lastName: info.lastName,
+    batch: info.batch,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  });
+}
+
+async function submitBallot(){
+  let firstInvalidIdx = null;
+  categories.forEach((cat, idx) => {
+    const rule = RULES[cat];
+    const catDiv = document.getElementById('category_'+idx);
+    let invalid = false;
+    if(rule.mode === 'vote' && (!selections[cat] || selections[cat].length !== rule.select)) invalid = true;
+    if(rule.mode === 'leader' && !leaderPick[cat]) invalid = true;
+    if(invalid){
+      catDiv.classList.add('invalid');
+      if(firstInvalidIdx === null) firstInvalidIdx = idx;
+    } else {
+      catDiv.classList.remove('invalid');
+    }
+  });
+
+  if(firstInvalidIdx !== null){
+    document.getElementById('category_'+firstInvalidIdx).scrollIntoView({behavior:'smooth', block:'center'});
+    showToast('ກະລຸນາໂຫວດໃຫ້ຄົບທຸກໜ່ວຍງານ', 'Vui lòng bầu đủ ở tất cả các mục');
+    return;
+  }
+
+  if(!voterInfo){
+    showToast('ບໍ່ພົບຂໍ້ມູນຜູ້ໂຫວດ', 'Không tìm thấy thông tin người bỏ phiếu');
+    showScreen('identityScreen');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = 'ກຳລັງສົ່ງ...<span class="vi">Đang gửi...</span>';
+
+  const ballotRecord = {
+    selections: {},
+    leaders: {},
+    voter: voterInfo,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  };
+
+  voteCategories.forEach(cat => {
+    ballotRecord.selections[cat] = [...(selections[cat] || [])];
+  });
+  leaderCategories.forEach(cat => {
+    ballotRecord.leaders[cat] = leaderPick[cat];
+  });
+
+  try{
+    // Save the complete ballot to Cloud Firestore.
+    await db.collection('ballots').add(ballotRecord);
+
+    // Record this voter so the same name + batch cannot vote again.
+    const voterKey = normalizeVoterKey(voterInfo.firstName, voterInfo.lastName, voterInfo.batch);
+    await registerVoter(voterKey, voterInfo);
+
+    showScreen('thanksScreen');
+  }catch(e){
+    console.error('submit failed', e);
+    btn.disabled = false;
+    btn.innerHTML = 'ສົ່ງບັດເລືອກຕັ້ງ<span class="vi">Gửi phiếu bầu</span>';
+    showToast(
+      'ເກີດຂໍ້ຜິດພາດ: ' + (e.message || 'Firebase error'),
+      'Có lỗi xảy ra: ' + (e.message || 'Firebase error')
+    );
+  }
+}
+
+
+let stopResultsListener = null;
+
+function loadResults(){
+  const container = document.getElementById('resultsContainer');
+  container.innerHTML = '<div style="text-align:center;padding:30px;color:var(--muted);font-size:0.85rem;">ກຳລັງໂຫຼດຜົນຄະແນນ... / Đang tải kết quả...</div>';
+
+  if(stopResultsListener){
+    stopResultsListener();
+    stopResultsListener = null;
+  }
+
+  stopResultsListener = db.collection('ballots').onSnapshot(
+    (snapshot) => {
+      const tally = {};
+
+      // Prepare candidates for every category that has votes.
+      voteCategories.concat(leaderCategories).forEach(cat => {
+        tally[cat] = {};
+        CANDIDATES
+          .filter(c => c.category === cat)
+          .forEach(c => { tally[cat][c.name] = 0; });
+      });
+
+      let totalBallots = 0;
+
+      snapshot.forEach(doc => {
+        const parsed = doc.data() || {};
+        totalBallots++;
+
+        Object.entries(parsed.selections || {}).forEach(([cat, names]) => {
+          if(tally[cat] && Array.isArray(names)){
+            names.forEach(name => {
+              if(Object.prototype.hasOwnProperty.call(tally[cat], name)){
+                tally[cat][name]++;
+              }
+            });
+          }
+        });
+
+        Object.entries(parsed.leaders || {}).forEach(([cat, name]) => {
+          if(tally[cat] && Object.prototype.hasOwnProperty.call(tally[cat], name)){
+            tally[cat][name]++;
+          }
+        });
+      });
+
+      container.innerHTML = '';
+
+      categories.forEach(cat => {
+        const rule = RULES[cat];
+        const block = document.createElement('div');
+        block.className = 'result-cat';
+
+        if(rule.mode === 'auto'){
+          const candidates = CANDIDATES.filter(c => c.category === cat);
+          block.innerHTML = `
+            <h3>${cat}<span class="vi">${CATEGORY_VI[cat] || ''}</span></h3>
+            <span class="result-note">${rule.note || ''}<span class="vi">${rule.noteVi || ''}</span></span>
+            ${candidates.map(c => `
+              <div class="result-row">
+                <div class="result-row-top">
+                  <span class="rname">${c.name}</span>
+                  <span class="rcount">ຮັບອັດຕະໂນມັດ<span class="vi">Tự động được nhận</span></span>
+                </div>
+              </div>
+            `).join('')}`;
+        } else {
+          const data = tally[cat] || {};
+          const rows = Object.entries(data)
+            .sort((a,b) => b[1] - a[1])
+            .map(([name,count]) => `
+              <div class="result-row">
+                <div class="result-row-top">
+                  <span class="rname">${name}</span>
+                  <span class="rcount">${count} ຄະແນນ</span>
+                </div>
+                <div class="result-track">
+                  <div class="result-fill" style="width:${totalBallots ? (count / totalBallots * 100) : 0}%"></div>
+                </div>
+              </div>
+            `).join('');
+
+          const noteText = rule.mode === 'vote'
+            ? `ຈະຄັດເລືອກ ${rule.select} ຄົນສູງສຸດ / Sẽ chọn ${rule.select} người cao điểm nhất`
+            : `ຈະຄັດເລືອກຫົວໜ້າ 1 ຄົນ / Sẽ chọn 1 trưởng ban`;
+
+          block.innerHTML = `
+            <h3>${cat}<span class="vi">${CATEGORY_VI[cat] || ''}</span></h3>
+            <span class="result-note">${noteText}</span>
+            ${rows}`;
+        }
+
+        container.appendChild(block);
+      });
+
+      document.getElementById('totalVotes').innerHTML =
+        `ໂຫວດທັງໝົດ ${totalBallots} ບັດ<span class="vi">Tổng cộng ${totalBallots} phiếu</span>`;
+    },
+    (error) => {
+      console.error('results listener failed', error);
+      container.innerHTML = `
+        <div style="padding:25px;text-align:center;color:#c62828;">
+          ບໍ່ສາມາດໂຫຼດຄະແນນໄດ້<br>
+          <span class="vi">Không thể tải kết quả</span><br><br>
+          <small>${error.message || 'Firebase error'}</small>
+        </div>`;
+    }
+  );
+}
+
+
+
+// ===============================
+// RESULTS PASSWORD PROTECTION
+// Change this password before publishing.
+// NOTE: This is a front-end gate, not true server-side security.
+// For a real election, use Firebase Authentication + Security Rules.
+// ===============================
+const RESULTS_PASSWORD = '8888';
+const ADMIN_PASSWORD = '30042007';
+
+function openAdminGate(){
+  const input = document.getElementById('adminPasswordInput');
+  const error = document.getElementById('adminPasswordError');
+  if(input) input.value = '';
+  if(error) error.style.display = 'none';
+  showScreen('adminPasswordScreen');
+  setTimeout(() => input && input.focus(), 100);
+}
+
+function verifyAdminPassword(){
+  const input = document.getElementById('adminPasswordInput');
+  const error = document.getElementById('adminPasswordError');
+  if(input && input.value === ADMIN_PASSWORD){
+    if(error) error.style.display = 'none';
+    showScreen('adminScreen');
+  }else{
+    if(error) error.style.display = 'block';
+    if(input){ input.value = ''; input.focus(); }
+  }
+}
+
+async function deleteCollectionAll(collectionName){
+  const snap = await db.collection(collectionName).get();
+  if(snap.empty) return 0;
+  let deleted = 0;
+  let batch = db.batch();
+  let count = 0;
+  for(const doc of snap.docs){
+    batch.delete(doc.ref);
+    count++;
+    deleted++;
+    if(count === 450){
+      await batch.commit();
+      batch = db.batch();
+      count = 0;
+    }
+  }
+  if(count > 0) await batch.commit();
+  return deleted;
+}
+
+async function resetAllElectionData(){
+  const btn = document.getElementById('resetAllBtn');
+  const status = document.getElementById('adminStatus');
+  if(!confirm('ยืนยันลบคะแนนทั้งหมด?\n\nข้อมูล ballots และ voters จะถูกลบทั้งหมด และไม่สามารถกู้คืนได้')) return;
+
+  btn.disabled = true;
+  status.textContent = 'กำลังลบข้อมูล... / Đang xóa dữ liệu...';
+
+  try{
+    if(typeof stopResultsListener === 'function' && stopResultsListener){
+      stopResultsListener();
+      stopResultsListener = null;
+    }
+    const ballotsDeleted = await deleteCollectionAll('ballots');
+    const votersDeleted = await deleteCollectionAll('voters');
+    status.innerHTML = `✅ ລີເຊັດສຳເລັດ: ລຶບ ${ballotsDeleted} ບັດ + ${votersDeleted} ລາຍຊື່<span class="vi">Đã xóa ${ballotsDeleted} phiếu + ${votersDeleted} người</span>`;
+    showToast('รีเซ็ตคะแนนทั้งหมดแล้ว / Đã xóa toàn bộ dữ liệu');
+  }catch(e){
+    console.error('reset failed', e);
+    status.innerHTML = `❌ ລີເຊັດບໍ່ສຳເລັດ<span class="vi">Không thể xóa dữ liệu</span><br><small>${e.message || e}</small>`;
+  }finally{
+    btn.disabled = false;
+  }
+}
+
+function openResultsGate(){
+  const input = document.getElementById('resultsPasswordInput');
+  const error = document.getElementById('resultsPasswordError');
+  if(input) input.value = '';
+  if(error) error.style.display = 'none';
+  showScreen('resultsPasswordScreen');
+  setTimeout(() => input && input.focus(), 100);
+}
+
+function verifyResultsPassword(){
+  const input = document.getElementById('resultsPasswordInput');
+  const error = document.getElementById('resultsPasswordError');
+
+  if(input && input.value === RESULTS_PASSWORD){
+    if(error) error.style.display = 'none';
+    showScreen('resultsScreen');
+    loadResults();
+  }else{
+    if(error) error.style.display = 'block';
+    if(input){
+      input.value = '';
+      input.focus();
+    }
+  }
+}
+
+document.getElementById('openAdminBtn').addEventListener('click', openAdminGate);
+document.getElementById('adminPasswordBtn').addEventListener('click', verifyAdminPassword);
+document.getElementById('adminPasswordBackBtn').addEventListener('click', () => showScreen('resultsScreen'));
+document.getElementById('adminPasswordInput').addEventListener('keydown', (e) => {
+  if(e.key === 'Enter') verifyAdminPassword();
+});
+document.getElementById('adminBackBtn').addEventListener('click', () => {
+  showScreen('resultsScreen');
+  loadResults();
+});
+document.getElementById('resetAllBtn').addEventListener('click', resetAllElectionData);
+
+document.getElementById('submitBtn').addEventListener('click', submitBallot);
+document.getElementById('viewResultsBtn').addEventListener('click', openResultsGate);
+document.getElementById('goResultsBtn').addEventListener('click', openResultsGate);
+document.getElementById('blockedResultsBtn').addEventListener('click', openResultsGate);
+document.getElementById('blockedBackBtn').addEventListener('click', () => showScreen('identityScreen'));
+document.getElementById('resultsPasswordBtn').addEventListener('click', verifyResultsPassword);
+document.getElementById('resultsPasswordBackBtn').addEventListener('click', () => showScreen('identityScreen'));
+document.getElementById('resultsPasswordInput').addEventListener('keydown', (e) => {
+  if(e.key === 'Enter') verifyResultsPassword();
+});
+document.getElementById('refreshBtn').addEventListener('click', loadResults);
+document.getElementById('backToVoteBtn').addEventListener('click', () => showScreen('voteScreen'));
+
+document.getElementById('continueBtn').addEventListener('click', async () => {
+  const firstName = document.getElementById('firstNameInput').value.trim();
+  const lastName = document.getElementById('lastNameInput').value.trim();
+  const batch = document.getElementById('batchInput').value;
+
+  if(!firstName || !lastName || !batch){
+    showToast('ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ', 'Vui lòng nhập đầy đủ thông tin');
+    return;
+  }
+
+  const btn = document.getElementById('continueBtn');
+  btn.disabled = true;
+  btn.innerHTML = 'ກຳລັງກວດສອບ...<span class="vi">Đang kiểm tra...</span>';
+
+  const key = normalizeVoterKey(firstName, lastName, batch);
+  const alreadyVoted = await isVoterAlreadyVoted(key);
+
+  btn.disabled = false;
+  btn.innerHTML = 'ດຳເນີນການຕໍ່<span class="vi">Tiếp tục</span>';
+
+  if(alreadyVoted){
+    showScreen('blockedScreen');
+    return;
+  }
+
+  voterInfo = { firstName, lastName, batch };
+  showScreen('voteScreen');
+});
+
+(async function init(){
+  renderBallot();
+  updateProgress();
+})();
+</script>
+</body>
+</html>
